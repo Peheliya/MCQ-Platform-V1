@@ -24,8 +24,10 @@ public interface McqService {
 
     void delete(Mcq mcq);
 
-    void deleteAll();
+    //void deleteAll();
 
     long count();
+
+    Mcq update(Mcq mcq);
 
 }

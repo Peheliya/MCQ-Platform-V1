@@ -65,7 +65,7 @@ public class McqController {
         return mcqService.count();
     }
 
-    @PutMapping
+    @PutMapping("")
     public Mcq update(@RequestBody McqDto mcqDto){
         Mcq exixtingMcq = mcqRepository.findById(mcqDto.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("MCQ","ID",mcqDto.getId()));

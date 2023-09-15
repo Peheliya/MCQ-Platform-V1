@@ -1,19 +1,16 @@
 package com.example.demo.dto;
 
-import com.example.demo.enums.DifficultyLevel;
 import com.example.demo.enums.Type;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
 
 @Data
-public class McqDto {
+public class AnswerDto {
     private Long id;
-    private Long moduleId;
-    private String question;
-    private String explanation;
+    private String answer;
+    private Boolean isCorrect;
     @Enumerated(EnumType.STRING)
     private Type type;
-    @Enumerated(EnumType.STRING)
-    private DifficultyLevel difficultyLevel;
+    private Long mcqId;
 }

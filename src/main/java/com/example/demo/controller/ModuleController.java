@@ -34,7 +34,6 @@ public class ModuleController {
         if(optionalSubject.isPresent()){
             module.setSubject(optionalSubject.get());
         }
-
         return moduleService.save(module);
     }
 

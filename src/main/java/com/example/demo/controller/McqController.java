@@ -3,12 +3,10 @@ package com.example.demo.controller;
 import com.example.demo.dto.McqDto;
 import com.example.demo.entity.Mcq;
 import com.example.demo.entity.Module;
-import com.example.demo.entity.Subject;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.McqRepository;
 import com.example.demo.service.McqService;
 import com.example.demo.service.ModuleService;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.dto.McqDto;
 import com.example.demo.entity.Mcq;
 import com.example.demo.entity.Module;
+import com.example.demo.enums.DifficultyLevel;
+import com.example.demo.enums.Type;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.McqRepository;
 import com.example.demo.service.McqService;
@@ -80,4 +82,10 @@ public class McqController {
 
         return mcqService.update(exixtingMcq);
     }
+
+    @GetMapping("/type")
+    public Type[] findType () { return Type.values();}
+
+    @GetMapping("/difficulty-level")
+    public DifficultyLevel[] findDifficultyLevel () { return DifficultyLevel.values();}
 }

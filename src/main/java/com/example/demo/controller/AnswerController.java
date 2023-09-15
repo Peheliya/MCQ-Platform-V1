@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.dto.AnswerDto;
 import com.example.demo.entity.Answer;
 import com.example.demo.entity.Mcq;
+import com.example.demo.enums.Type;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.AnswerRepository;
 import com.example.demo.service.AnswerService;
@@ -76,4 +77,7 @@ public class AnswerController {
         }
         return answerService.update(existingAnswer);
     }
+
+    @GetMapping("/type")
+    public Type[] findType () { return Type.values();}
 }

@@ -16,5 +16,5 @@ public class Module {
 
     @ManyToOne
     @JoinColumn(name = "SUBJECT_ID", nullable = false)
-    private Subject subject;
+    private Subject subjectId;
 }

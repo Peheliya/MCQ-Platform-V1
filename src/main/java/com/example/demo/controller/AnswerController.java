@@ -36,7 +36,7 @@ public class AnswerController {
         System.out.println(answerDto);
         Optional<Mcq> optionalMcq = mcqService.find(answerDto.getMcqId());
         if(optionalMcq.isPresent()){
-            answer.setMcq(optionalMcq.get());
+            answer.setMcqId(optionalMcq.get());
         }
         return answerService.save(answer);
     }
@@ -73,7 +73,7 @@ public class AnswerController {
         existingAnswer.setType(answerDto.getType());
         Optional<Mcq> optionalMcq = mcqService.find(answerDto.getMcqId());
         if(optionalMcq.isPresent()){
-            existingAnswer.setMcq(optionalMcq.get());
+            existingAnswer.setMcqId(optionalMcq.get());
         }
         return answerService.update(existingAnswer);
     }

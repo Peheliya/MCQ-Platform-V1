@@ -32,7 +32,7 @@ public class ModuleController {
         module.setName(moduleDto.getName());
         Optional<Subject> optionalSubject = subjectService.find(moduleDto.getSubjectId());
         if(optionalSubject.isPresent()){
-            module.setSubject(optionalSubject.get());
+            module.setSubjectId(optionalSubject.get());
         }
         return moduleService.save(module);
     }
@@ -67,7 +67,7 @@ public class ModuleController {
         existingModule.setName(moduleDto.getName());
         Optional<Subject> optionalSubject = subjectService.find(moduleDto.getSubjectId());
         if(optionalSubject.isPresent()){
-            existingModule.setSubject(optionalSubject.get());
+            existingModule.setSubjectId(optionalSubject.get());
         }
         return moduleService.update(existingModule);
     }

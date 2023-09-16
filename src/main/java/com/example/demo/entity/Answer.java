@@ -24,5 +24,5 @@ public class Answer {
 
     @ManyToOne
     @JoinColumn(name = "MCQ_ID")
-    private Mcq mcq;
+    private Mcq mcqId;
 }

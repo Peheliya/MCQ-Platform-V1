@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Mcq;
+import com.example.demo.enums.DifficultyLevel;
 import com.example.demo.repository.McqRepository;
 import com.example.demo.service.McqService;
 import org.springframework.data.domain.Page;
@@ -66,6 +67,21 @@ public class McqServiceImpl implements McqService {
     @Override
     public Mcq update(Mcq mcq) {
         return mcqRepository.save(mcq);
+    }
+
+    @Override
+    public List<Mcq> getMcqByModuleId(Long moduleId) {
+        return mcqRepository.getMcqByModuleId(moduleId);
+    }
+
+    @Override
+    public List<Mcq> getMcqByDifficultyLevel(DifficultyLevel difficultyLevel) {
+        return mcqRepository.getMcqByDifficultyLevel(difficultyLevel);
+    }
+
+    @Override
+    public List<Mcq> getMcqByModuleIdAndDifficultyLevel(Long moduleId, DifficultyLevel difficultyLevel) {
+        return mcqRepository.getMcqByModuleIdAndDifficultyLevel(moduleId,difficultyLevel);
     }
 
 }

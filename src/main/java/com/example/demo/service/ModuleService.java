@@ -29,4 +29,6 @@ public interface ModuleService {
     long count();
 
     Module update(Module module);
+
+    List<Module> getModuleBySubjectId(Long subjectId);
 }

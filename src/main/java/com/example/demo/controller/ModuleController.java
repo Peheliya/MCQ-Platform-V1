@@ -72,4 +72,10 @@ public class ModuleController {
         return moduleService.update(existingModule);
     }
 
+    @GetMapping("/subject/{id}")
+    public List<Module> getModuleBySubjectId(@PathVariable(value = "id") Long id){
+        return moduleService.getModuleBySubjectId(id);
+    }
+
+
 }

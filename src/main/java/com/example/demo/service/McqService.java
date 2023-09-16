@@ -1,6 +1,8 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Mcq;
+import com.example.demo.entity.Module;
+import com.example.demo.enums.DifficultyLevel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,4 +32,9 @@ public interface McqService {
 
     Mcq update(Mcq mcq);
 
+    List<Mcq> getMcqByModuleId(Long moduleId);
+
+    List<Mcq> getMcqByDifficultyLevel(DifficultyLevel difficultyLevel);
+
+    List<Mcq> getMcqByModuleIdAndDifficultyLevel(Long moduleId, DifficultyLevel difficultyLevel);
 }

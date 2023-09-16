@@ -68,4 +68,9 @@ public class ModuleServiceImpl implements ModuleService {
         return moduleRepository.save(module);
     }
 
+    @Override
+    public List<Module> getModuleBySubjectId(Long subjectId) {
+        return moduleRepository.getModuleBySubjectId(subjectId);
+    }
+
 }

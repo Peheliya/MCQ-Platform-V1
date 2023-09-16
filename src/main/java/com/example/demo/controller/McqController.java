@@ -88,4 +88,21 @@ public class McqController {
 
     @GetMapping("/difficulty-level")
     public DifficultyLevel[] findDifficultyLevel () { return DifficultyLevel.values();}
+
+    //@GetMapping("/module/{id}")
+    //public List<Mcq> getMcqByModuleId(@PathVariable(value = "id") Long id){
+    //    return mcqService.getMcqByModuleId(id);
+    //}
+    @GetMapping("/difficulty/{difficultyLevel}")
+    public List<Mcq> getMcqByDifficultyLevel(@PathVariable(value = "difficultyLevel") DifficultyLevel difficultyLevel){
+        return mcqService.getMcqByDifficultyLevel(difficultyLevel);
+    }
+    @GetMapping("/module/{id}/difficulty/{difficultyLevel}")
+    public List<Mcq> getMcqByModuleIdAndDifficultyLevel(@PathVariable(value = "id") Long id,@PathVariable(value = "difficultyLevel") DifficultyLevel difficultyLevel){
+        return mcqService.getMcqByModuleIdAndDifficultyLevel(id,difficultyLevel);
+    }
+    @GetMapping("/module/{id}")
+    public List<Mcq> getMcqByModuleId(@PathVariable(value = "id") Long id){
+        return mcqService.getMcqByModuleId(id);
+    }
 }

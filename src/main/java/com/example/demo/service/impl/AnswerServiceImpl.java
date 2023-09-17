@@ -68,4 +68,9 @@ public class AnswerServiceImpl implements AnswerService {
         return answerRepository.save(answer);
     }
 
+    @Override
+    public List<Answer> getAnswerByMcqId(Long mcqId) {
+        return answerRepository.getAnswerByMcqId(mcqId);
+    }
+
 }

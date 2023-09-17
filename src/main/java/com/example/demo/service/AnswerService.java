@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Answer;
+import com.example.demo.entity.Mcq;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,4 +31,5 @@ public interface AnswerService {
 
     Answer update(Answer answer);
 
+    List<Answer> getAnswerByMcqId(Long mcqId);
 }

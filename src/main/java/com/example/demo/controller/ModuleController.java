@@ -77,5 +77,4 @@ public class ModuleController {
         return moduleService.getModuleBySubjectId(id);
     }
 
-
 }

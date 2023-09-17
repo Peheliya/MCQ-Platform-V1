@@ -10,7 +10,7 @@ public class AnswerDto {
     private Long id;
     private String answer;
     private Boolean isCorrect;
-    @Enumerated(EnumType.STRING)
-    private Type type;
+    //@Enumerated(EnumType.STRING)
+    private int type;
     private Long mcqId;
 }

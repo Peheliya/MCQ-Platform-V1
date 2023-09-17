@@ -38,8 +38,8 @@ public class McqController {
         }
         mcq.setQuestion(mcqDto.getQuestion());
         mcq.setExplanation(mcqDto.getExplanation());
-        mcq.setType(mcqDto.getType());
-        mcq.setDifficultyLevel(mcqDto.getDifficultyLevel());
+        mcq.setType(Type.valueOfType(mcqDto.getType()));
+        mcq.setDifficultyLevel(DifficultyLevel.valueOfLevel(mcqDto.getDifficultyLevel()));
 
         return mcqService.save(mcq);
     }
@@ -77,8 +77,8 @@ public class McqController {
         }
         exixtingMcq.setQuestion(mcqDto.getQuestion());
         exixtingMcq.setExplanation(mcqDto.getExplanation());
-        exixtingMcq.setType(mcqDto.getType());
-        exixtingMcq.setDifficultyLevel(mcqDto.getDifficultyLevel());
+        exixtingMcq.setType(Type.valueOfType(mcqDto.getType()));
+        exixtingMcq.setDifficultyLevel(DifficultyLevel.valueOfLevel(mcqDto.getDifficultyLevel()));
 
         return mcqService.update(exixtingMcq);
     }
@@ -89,17 +89,13 @@ public class McqController {
     @GetMapping("/difficulty-level")
     public DifficultyLevel[] findDifficultyLevel () { return DifficultyLevel.values();}
 
-    //@GetMapping("/module/{id}")
-    //public List<Mcq> getMcqByModuleId(@PathVariable(value = "id") Long id){
-    //    return mcqService.getMcqByModuleId(id);
-    //}
     @GetMapping("/difficulty/{difficultyLevel}")
-    public List<Mcq> getMcqByDifficultyLevel(@PathVariable(value = "difficultyLevel") DifficultyLevel difficultyLevel){
-        return mcqService.getMcqByDifficultyLevel(difficultyLevel);
+    public List<Mcq> getMcqByDifficultyLevel(@PathVariable(value = "difficultyLevel") int difficultyLevel){
+        return mcqService.getMcqByDifficultyLevel(DifficultyLevel.valueOfLevel(difficultyLevel));
     }
     @GetMapping("/module/{id}/difficulty/{difficultyLevel}")
-    public List<Mcq> getMcqByModuleIdAndDifficultyLevel(@PathVariable(value = "id") Long id,@PathVariable(value = "difficultyLevel") DifficultyLevel difficultyLevel){
-        return mcqService.getMcqByModuleIdAndDifficultyLevel(id,difficultyLevel);
+    public List<Mcq> getMcqByModuleIdAndDifficultyLevel(@PathVariable(value = "id") Long id,@PathVariable(value = "difficultyLevel") int difficultyLevel){
+        return mcqService.getMcqByModuleIdAndDifficultyLevel(id,DifficultyLevel.valueOfLevel(difficultyLevel));
     }
     @GetMapping("/module/{id}")
     public List<Mcq> getMcqByModuleId(@PathVariable(value = "id") Long id){

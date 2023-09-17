@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ModuleRepository extends JpaRepository<Module, Long> {
-    @Query(value = "SELECT * FROM module where module.subject_id = :subjectId ;", nativeQuery = true)
+    @Query(value = "SELECT * FROM module where module.subject_Id = :subjectId ;", nativeQuery = true)//if many use "subject ."
     List<Module> getModuleBySubjectId(@Param("subjectId") Long subjectId);
 }

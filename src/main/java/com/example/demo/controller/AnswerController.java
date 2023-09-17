@@ -32,8 +32,7 @@ public class AnswerController {
         Answer answer = new Answer();
         answer.setAnswer(answerDto.getAnswer());
         answer.setIsCorrect(answerDto.getIsCorrect());
-        answer.setType(answerDto.getType());
-        System.out.println(answerDto);
+        answer.setType(Type.valueOfType(answerDto.getType()));
         Optional<Mcq> optionalMcq = mcqService.find(answerDto.getMcqId());
         if(optionalMcq.isPresent()){
             answer.setMcqId(optionalMcq.get());
@@ -70,7 +69,7 @@ public class AnswerController {
                 new ResourceNotFoundException("Answer","ID",answerDto.getId()));
         existingAnswer.setAnswer(answerDto.getAnswer());
         existingAnswer.setIsCorrect(answerDto.getIsCorrect());
-        existingAnswer.setType(answerDto.getType());
+        existingAnswer.setType(Type.valueOfType(answerDto.getType()));
         Optional<Mcq> optionalMcq = mcqService.find(answerDto.getMcqId());
         if(optionalMcq.isPresent()){
             existingAnswer.setMcqId(optionalMcq.get());
@@ -80,4 +79,9 @@ public class AnswerController {
 
     @GetMapping("/type")
     public Type[] findType () { return Type.values();}
+
+    @GetMapping("/mcq/{id}")
+    public List<Answer> getAnswerByMcqId(@PathVariable(value = "id") Long id){
+        return answerService.getAnswerByMcqId(id);
+    }
 }

@@ -12,8 +12,8 @@ public class McqDto {
     private Long moduleId;
     private String question;
     private String explanation;
-    @Enumerated(EnumType.STRING)
-    private Type type;
-    @Enumerated(EnumType.STRING)
-    private DifficultyLevel difficultyLevel;
+    //@Enumerated(EnumType.STRING)
+    private int type;
+    //@Enumerated(EnumType.STRING)
+    private int difficultyLevel;
 }

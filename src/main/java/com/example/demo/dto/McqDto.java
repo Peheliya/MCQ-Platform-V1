@@ -1,9 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.enums.DifficultyLevel;
-import com.example.demo.enums.Type;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.Data;
 
 @Data

@@ -31,9 +31,7 @@ public class ModuleController {
         Module module = new Module();
         module.setName(moduleDto.getName());
         Optional<Subject> optionalSubject = subjectService.find(moduleDto.getSubjectId());
-        if(optionalSubject.isPresent()){
-            module.setSubjectId(optionalSubject.get());
-        }
+        optionalSubject.ifPresent(module::setSubjectId);
         return moduleService.save(module);
     }
 
@@ -66,9 +64,7 @@ public class ModuleController {
         new ResourceNotFoundException("Module","ID",moduleDto.getId()));
         existingModule.setName(moduleDto.getName());
         Optional<Subject> optionalSubject = subjectService.find(moduleDto.getSubjectId());
-        if(optionalSubject.isPresent()){
-            existingModule.setSubjectId(optionalSubject.get());
-        }
+        optionalSubject.ifPresent(existingModule::setSubjectId);
         return moduleService.update(existingModule);
     }
 

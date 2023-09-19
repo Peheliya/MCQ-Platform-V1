@@ -33,9 +33,7 @@ public class McqController {
     public Mcq save(@RequestBody McqDto mcqDto){
         Mcq mcq = new Mcq();
         Optional<Module> optionalModule = moduleService.find(mcqDto.getModuleId());
-        if(optionalModule.isPresent()){
-            mcq.setModule(optionalModule.get());
-        }
+        optionalModule.ifPresent(mcq::setModule);
         mcq.setQuestion(mcqDto.getQuestion());
         mcq.setExplanation(mcqDto.getExplanation());
         mcq.setType(Type.valueOfType(mcqDto.getType()));
@@ -72,9 +70,7 @@ public class McqController {
         Mcq exixtingMcq = mcqRepository.findById(mcqDto.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("MCQ","ID",mcqDto.getId()));
         Optional<Module> optionalModule = moduleService.find(mcqDto.getModuleId());
-        if(optionalModule.isPresent()){
-            exixtingMcq.setModule(optionalModule.get());
-        }
+        optionalModule.ifPresent(exixtingMcq::setModule);
         exixtingMcq.setQuestion(mcqDto.getQuestion());
         exixtingMcq.setExplanation(mcqDto.getExplanation());
         exixtingMcq.setType(Type.valueOfType(mcqDto.getType()));

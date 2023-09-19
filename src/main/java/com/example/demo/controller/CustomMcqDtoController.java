@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import com.example.demo.dto.CustomMcqDto;
 import com.example.demo.service.CustomMcqDtoService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,8 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/custommcq")
 public class CustomMcqDtoController {
-    @Autowired
-    private CustomMcqDtoService customMcqDtoService;
+    private final CustomMcqDtoService customMcqDtoService;
+
+    public CustomMcqDtoController(CustomMcqDtoService customMcqDtoService) {
+        this.customMcqDtoService = customMcqDtoService;
+    }
 
     @GetMapping("/{mcqId}")
     public ResponseEntity<CustomMcqDto> getCustomMcqDto(@PathVariable Long mcqId) {

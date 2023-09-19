@@ -1,7 +1,6 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Mcq;
-import com.example.demo.entity.Module;
 import com.example.demo.enums.DifficultyLevel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

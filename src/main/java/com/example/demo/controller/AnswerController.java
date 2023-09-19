@@ -17,8 +17,8 @@ import java.util.Optional;
 @RequestMapping("api/answer")
 public class AnswerController {
 
-    private McqService mcqService;
-    private AnswerRepository answerRepository;
+    private final McqService mcqService;
+    private final AnswerRepository answerRepository;
     private final AnswerService answerService;
 
     public AnswerController(McqService mcqService, AnswerRepository answerRepository, AnswerService answerService) {

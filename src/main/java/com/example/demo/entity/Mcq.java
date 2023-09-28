@@ -20,6 +20,9 @@ public class Mcq {
     @Column(name = "QUESTION", nullable = false)
     private String question;
 
+    @Column(name = "IMAGE", nullable = false)
+    private String image;
+
     @Column(name = "EXPLANATION")
     private String explanation;
 

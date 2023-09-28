@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.User;
+import com.example.demo.enums.UserType;
 import com.example.demo.service.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,5 +46,15 @@ public class UserController {
     @GetMapping("/count")
     public long count(){
         return userService.count();
+    }
+
+    @PutMapping("")
+    public ResponseEntity<User> update(@RequestBody User user){
+        return new ResponseEntity<>(userService.update(user), HttpStatus.OK);
+    }
+
+    @GetMapping("/type/{type}")
+    public List<User> getUserByUserType(@PathVariable(value = "type") int userType){
+        return userService.getUserByUserType(UserType.valueOfUserType(userType));
     }
 }

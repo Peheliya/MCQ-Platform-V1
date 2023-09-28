@@ -35,6 +35,7 @@ public class McqController {
         Optional<Module> optionalModule = moduleService.find(mcqDto.getModuleId());
         optionalModule.ifPresent(mcq::setModule);
         mcq.setQuestion(mcqDto.getQuestion());
+        mcq.setImage(mcqDto.getImage());
         mcq.setExplanation(mcqDto.getExplanation());
         mcq.setType(Type.valueOfType(mcqDto.getType()));
         mcq.setDifficultyLevel(DifficultyLevel.valueOfLevel(mcqDto.getDifficultyLevel()));
@@ -72,6 +73,7 @@ public class McqController {
         Optional<Module> optionalModule = moduleService.find(mcqDto.getModuleId());
         optionalModule.ifPresent(exixtingMcq::setModule);
         exixtingMcq.setQuestion(mcqDto.getQuestion());
+        exixtingMcq.setImage(mcqDto.getImage());
         exixtingMcq.setExplanation(mcqDto.getExplanation());
         exixtingMcq.setType(Type.valueOfType(mcqDto.getType()));
         exixtingMcq.setDifficultyLevel(DifficultyLevel.valueOfLevel(mcqDto.getDifficultyLevel()));

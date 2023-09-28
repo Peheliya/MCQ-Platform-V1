@@ -31,6 +31,7 @@ public class AnswerController {
     public Answer save(@RequestBody AnswerDto answerDto){
         Answer answer = new Answer();
         answer.setAnswer(answerDto.getAnswer());
+        answer.setImage(answerDto.getImage());
         answer.setIsCorrect(answerDto.getIsCorrect());
         answer.setType(Type.valueOfType(answerDto.getType()));
         Optional<Mcq> optionalMcq = mcqService.find(answerDto.getMcqId());
@@ -68,6 +69,7 @@ public class AnswerController {
         Answer existingAnswer = answerRepository.findById(answerDto.getId()).orElseThrow(() ->
                 new ResourceNotFoundException("Answer","ID",answerDto.getId()));
         existingAnswer.setAnswer(answerDto.getAnswer());
+        existingAnswer.setImage(answerDto.getImage());
         existingAnswer.setIsCorrect(answerDto.getIsCorrect());
         existingAnswer.setType(Type.valueOfType(answerDto.getType()));
         Optional<Mcq> optionalMcq = mcqService.find(answerDto.getMcqId());

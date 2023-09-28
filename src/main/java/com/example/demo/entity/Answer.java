@@ -15,6 +15,9 @@ public class Answer {
     @Column(name = "ANSWER", nullable = false)
     private String answer;
 
+    @Column(name = "IMAGE", nullable = false)
+    private String image;
+
     @Column(name = "IS_CORRECT", nullable = false)
     private Boolean isCorrect;
 

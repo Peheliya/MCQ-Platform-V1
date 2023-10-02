@@ -56,15 +56,27 @@ public class UserController {
         return userService.count();
     }
 
+//    @PutMapping("")
+//    public User update(@RequestBody UserDto userDto){
+//        User existingUser = userService.find(userDto.getId()).orElseThrow(()->
+//                new ResourceNotFoundException("User","ID",userDto.getId()));//Custom exception
+//        existingUser.setName(userDto.getName());
+//        existingUser.setEmail(userDto.getEmail());
+//        existingUser.setPassword(userDto.getPassword());
+//        existingUser.setUserType(UserType.valueOfUserType(userDto.getUserType()));
+//        existingUser.setUserStatus(UserStatus.valueOfUserStatus(userDto.getUserStatus()));
+//        return userService.update(existingUser);
+//    }
+
     @PutMapping("")
-    public User update(@RequestBody UserDto userDto){
-        User existingUser = userService.find(userDto.getId()).orElseThrow(()->
-                new ResourceNotFoundException("User","ID",userDto.getId()));//Custom exception
-        existingUser.setName(userDto.getName());
-        existingUser.setEmail(userDto.getEmail());
-        existingUser.setPassword(userDto.getPassword());
-        existingUser.setUserType(UserType.valueOfUserType(userDto.getUserType()));
-        existingUser.setUserStatus(UserStatus.valueOfUserStatus(userDto.getUserStatus()));
+    public User update(@RequestBody User user){
+        User existingUser = userService.find(user.getId()).orElseThrow(()->
+                new ResourceNotFoundException("User","ID",user.getId()));//Custom exception
+        existingUser.setName(user.getName());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setUserType(user.getUserType());
+        existingUser.setUserStatus(user.getUserStatus());
         return userService.update(existingUser);
     }
 

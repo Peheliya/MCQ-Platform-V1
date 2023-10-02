@@ -1,6 +1,7 @@
 package com.eduford.www.controller;
 
 import com.eduford.www.entity.Subject;
+import com.eduford.www.exception.ResourceNotFoundException;
 import com.eduford.www.service.SubjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,7 +49,10 @@ public class SubjectController {
     }
 
     @PutMapping("")
-    public ResponseEntity<Subject> update(@RequestBody Subject subject){
-        return new ResponseEntity<>(subjectService.update(subject), HttpStatus.OK);
+    public Subject update(@RequestBody Subject subject){
+        Subject optionalSubject = subjectService.find(subject.getId()).orElseThrow(()->
+                new ResourceNotFoundException("Subject","ID",subject.getId()));
+        optionalSubject.setName(subject.getName());
+        return subjectService.update(optionalSubject);
     }
 }

@@ -1,6 +1,7 @@
 package com.eduford.www.controller;
 
 import com.eduford.www.dto.CustomMcqDto;
+import com.eduford.www.exception.ResourceNotFoundException;
 import com.eduford.www.service.CustomMcqDtoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +19,12 @@ public class CustomMcqDtoController {
     }
 
     @GetMapping("/{mcqId}")
-    public ResponseEntity<CustomMcqDto> getCustomMcqDto(@PathVariable Long mcqId) {
+    public CustomMcqDto getCustomMcqDto(@PathVariable Long mcqId) {
         CustomMcqDto customMcqDto = customMcqDtoService.createCustomMcqDto(mcqId);
         if (customMcqDto != null) {
-            return ResponseEntity.ok(customMcqDto);
+            return customMcqDto;
         } else {
-            return ResponseEntity.notFound().build();
+            throw  new ResourceNotFoundException("Custom MCQ","ID",mcqId);
         }
     }
 }

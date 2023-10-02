@@ -1,10 +1,11 @@
 package com.eduford.www.controller;
 
+import com.eduford.www.dto.UserDto;
 import com.eduford.www.entity.User;
+import com.eduford.www.enums.UserStatus;
 import com.eduford.www.enums.UserType;
+import com.eduford.www.exception.ResourceNotFoundException;
 import com.eduford.www.service.UserService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,13 @@ public class UserController {
     }
 
     @PostMapping("")
-    public User save(@RequestBody User user){
+    public User save(@RequestBody UserDto userDto){
+        User user = new User();
+        user.setName(userDto.getName());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
+        user.setUserType(UserType.valueOfUserType(userDto.getUserType()));
+        user.setUserStatus(UserStatus.valueOfUserStatus(userDto.getUserStatus()));
         return userService.save(user);
     }
 
@@ -49,8 +56,15 @@ public class UserController {
     }
 
     @PutMapping("")
-    public ResponseEntity<User> update(@RequestBody User user){
-        return new ResponseEntity<>(userService.update(user), HttpStatus.OK);
+    public User update(@RequestBody UserDto userDto){
+        User existingUser = userService.find(userDto.getId()).orElseThrow(()->
+                new ResourceNotFoundException("User","ID",userDto.getId()));//Custom exception
+        existingUser.setName(userDto.getName());
+        existingUser.setEmail(userDto.getEmail());
+        existingUser.setPassword(userDto.getPassword());
+        existingUser.setUserType(UserType.valueOfUserType(userDto.getUserType()));
+        existingUser.setUserStatus(UserStatus.valueOfUserStatus(userDto.getUserStatus()));
+        return userService.update(existingUser);
     }
 
     @GetMapping("/type/{type}")
